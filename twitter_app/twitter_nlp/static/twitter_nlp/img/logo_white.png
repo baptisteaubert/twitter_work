@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="595px" height="461px" viewBox="0 0 595 461" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop-HD" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-428.000000, -267.000000)">
+        <g id="Group" transform="translate(413.000000, 268.000000)">
+            <text id="DataDeer" font-family="Lato-Light, Lato" font-size="144" font-weight="300" fill="#FFFFFF">
+                <tspan x="0.168" y="458">DataDeer</tspan>
+            </text>
+            <path d="M147.7098,37.3075 C159.0428,55.9745 173.2858,46.4465 183.5848,61.2695" id="Stroke-1" stroke="#FFFFFF" stroke-width="8"></path>
+            <path d="M444.953,0.4744 C444.953,0.4744 458.262,55.0434 388.453,106.9744 C306.453,167.9744 351.953,197.4744 357.453,199.4744 C362.953,201.4744 430.703,194.7244 415.444,132.5224 C375.703,147.7244 339.189,218.6214 339.013,272.9744 C323.725,288.2614 307.453,315.9744 307.453,315.9744 C307.453,315.9744 291.181,288.2614 275.893,272.9744 C275.716,218.6214 239.203,147.7244 199.462,132.5224 C184.203,194.7244 251.953,201.4744 257.453,199.4744 C262.953,197.4744 308.453,167.9744 226.453,106.9744 C156.644,55.0434 169.953,0.4744 169.953,0.4744" id="Stroke-3" stroke="#FFFFFF" stroke-width="8"></path>
+            <path d="M467.1961,37.3075 C455.8631,55.9745 441.6201,46.4465 431.3201,61.2695" id="Stroke-5" stroke="#FFFFFF" stroke-width="8"></path>
+        </g>
+    </g>
+</svg>

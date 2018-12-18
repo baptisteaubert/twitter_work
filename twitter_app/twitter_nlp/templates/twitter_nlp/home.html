@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HSBC Social Media News Sentiment Analysis</title>
+    <meta name="description" content="Sentiment Analysis - HSBC">
+    <meta name="keywords" content="HSBC">
+    <meta name="author" content="HSBC">
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'twitter_nlp/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'twitter_nlp/css/bootstrap.css' %}">
+
+    <!--Social Networks-->
+    <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="DataDeer - Russian World Cup"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Russian World Cup - Data"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://twitter_nlp.datadeer.fr"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="DataDeer twitter_nlp Dashboard"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://twitter_nlp.datadeer.fr/static/twitter_nlp/img/preview.png"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
+
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'twitter_nlp/css/style.css' %}">
+
+    <!-- LOADER -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'twitter_nlp/css/loader.css' %}">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="{% static 'twitter_nlp/js/loader.js' %}"></script> -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114718272-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-114718272-3');
+    </script>
+
+
+    <style>
+    body {
+    /* background-image: url("{% static 'twitter_nlp/img/football-stadium-227561_1920.jpg' %}"); */
+    /* background-image: url("{% static 'twitter_nlp/img/vienna-reyes-616732-unsplash.jpg' %}"); */
+    background-image: url("{% static 'twitter_nlp/img/christoph-theisinger-719990-unsplash.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    </style>
+
+  </head>
+  <body>
+    <div class="se-pre-con"></div>
+
+
+    <!-- Home Page
+    ==========================================-->
+    <div class="text-center">
+        <div class="overlay">
+            <div class="content" style="padding:10%">
+                <img src="{% static 'twitter_nlp/img/logo_hsbc.png' %}" alt="HSBC" style="height:35%;max-width:50%;"/>
+                <h1>Welcome on <strong><span class="color">HSBC</span></strong> Twitter Sentiment Analysis API</h1>
+                <p class="lead">Version 0.1 - Pre Trained Word To Vec</p>
+                <!-- <form method = "post" action = "{% url 'home' %}">
+                  {% csrf_token %}
+                  <input class="btn_resume" type="submit" value="Take a Look">
+                </form> -->
+                <form method = "post" action = "{% url 'home' %}">
+                  {% csrf_token %}
+                    <select name = 'filter'>
+                      <option selected="selected" disabled>Available Filters:</option>
+                      <option value="#Trump">Donald Trump</option>
+                      <option value="#May">Theresa May</option>
+                      <option value="#Google">Google </option>
+                      <option value="#Apple">Apple</option>
+                    </select>
+                    <input type="submit" value="Take a Look">
+                  </form>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>

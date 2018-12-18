@@ -1,0 +1,184 @@
+{% extends 'twitter_nlp/base.html' %}
+{% load static %}
+
+{% block head %}
+
+<meta http-equiv=”refresh” content=”5" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114718272-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114718272-3');
+</script>
+{% endblock head %}
+
+<!-- BLOCK MAIN  -->
+{% block main %}
+<style>
+div.scrollmenu {
+    background-color: white;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu li {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+</style>
+<h3> You are tracking {{ hashtag }} from HSBC Twitter Sentiment Analysis API </h3>
+<div class="main-content" style="padding-top: 10px;">
+    <div class="section__content section__content--p10">
+        <div class="container-fluid">
+
+              <div class="col-lg-12" style="padding-left:7px;">
+                  <div class="au-card m-b-15" style="padding-left: 20px;">
+                      <div class="au-card-inner">
+                          <h3 class="title-2 m-b-40">Popularity of {{hashtag}} Tweets</h3>
+                          <div class="chart-wrapper" id="simple_plot"></div>
+                      </div>
+                  </div>
+              </div>
+              <form method = "post" action = "{% url 'home' %}">
+                {% csrf_token %}
+                <input class="btn_resume" type="submit" value="Kill and Go Back Home,
+                you dont have a server so you can only process one streaming the streaming process is
+                {{ child_stream_pid }} and the aggregatie process is {{ child_aggreg_pid }} "
+              </form>
+          </div>
+
+          </div>
+
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->
+{% endblock %}
+
+
+<!-- BLOCK D3V4 MODIFY D3 VERSION V4 CHARTS -->
+{% block d3v4 %}
+
+<!-- MULTI LINES CHART -->
+<script type="text/javascript">
+  d3v4 = d3
+
+  window.addEventListener("resize", redraw)
+  const margin_plot = {
+      top: 10,
+      right: 10,
+      bottom: 60,
+      left: 60,
+  };
+  let div_plot = document.getElementById("simple_plot");
+  let svg_plot_init = d3v4.select("#simple_plot").append("svg")
+
+  var format_date = d3v4.timeFormat("%H:%M");
+  let dataset_plot = []
+  let x_plot, y_plot;
+  let svg_plot;
+  let bisect_date_plot;
+
+
+
+  fetch("http://127.0.0.1:8000/positive_negative", {
+  method: 'get',
+  dataType: 'json',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+  })
+  .then(response => response.json())
+  .then(response => {
+
+    data = JSON.parse(response);
+
+    data.forEach(function(item,index){
+      date = new Date(item["Time"])
+      dataset_plot.push({"Time": date,
+        "Positive":Number(item["Positive"]),
+        "Negative":Number(item["Negative"])});
+
+    });
+
+    bisect_date_plot = d3v4.bisector(function(d) { return d["Time"];}).left;
+
+    x_plot = d3v4.scaleTime()
+                 .domain(d3v4.extent(dataset_plot,function(d) {
+                      return d["Time"];
+                  }));
+
+    console.log(d3v4.extent(dataset_plot,function(d) {
+                      return d["Time"];
+                  }));
+
+    y_plot = d3v4.scaleLinear()
+            .domain([0, d3v4.max(dataset_plot,function(d) {
+                return Math.max(d["Positive"], d["Negative"]);
+                }
+              )]);
+    redraw();
+
+  });
+
+</script>
+<!-- <script>
+  setInterval(function(){
+      fetch("http://127.0.0.1:8000/positive_negative", {
+      method: 'get',
+      dataType: 'json',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+      })
+      .then(response => response.json())
+      .then(response => {
+
+        data = JSON.parse(response);
+        console.log(data)
+
+        data.forEach(function(item,index){
+          date = new Date(item["Time"])
+          dataset_plot.push({"Time": date,
+            "Positive":Number(item["Positive"]),
+            "Negative":Number(item["Negative"])});
+
+        });
+
+        bisect_date_plot = d3v4.bisector(function(d) { return d["Time"];}).left;
+
+        x_plot = d3v4.scaleTime()
+                     .domain(d3v4.extent(dataset_plot,function(d) {
+                          return d["Time"];
+                      }));
+
+        console.log(d3v4.extent(dataset_plot,function(d) {
+                          return d["Time"];
+                      }));
+
+        y_plot = d3v4.scaleLinear()
+                .domain([0, d3v4.max(dataset_plot,function(d) {
+                    return Math.max(d["Positive"], d["Negative"]);
+                    }
+                  )]);
+        redraw();
+
+      });
+    }, 45000);
+
+</script> -->
+
+
+
+
+{% endblock d3v4 %}
